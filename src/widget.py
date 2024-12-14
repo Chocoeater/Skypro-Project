@@ -1,9 +1,8 @@
-import masks
+from . import masks
 
 
 def mask_account_card(card: str) -> str:
     """Принимает на вход строку, содержащую тип и номер карты или счета, возвращает строку с маской"""
-    result = ''
     type_card = []
     account = ''
     list_of_card = card.split()
