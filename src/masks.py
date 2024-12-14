@@ -10,4 +10,3 @@ def get_mask_account(number_account: int) -> str:
     """Принимает номер счета в виде числа, возвращает маску формата **1234 в виде строки"""
     number_account = str(number_account)
     return "**" + number_account[-4:]
-go
