@@ -15,5 +15,5 @@ def filter_by_state(list_of_data: List[Dict], state: str = 'EXECUTED') -> List[D
 def sort_by_date(list_of_data: List[Dict], decreasing: bool = True) -> List[Dict]:
     """Принимает список словарей и необязательный параметр, задающий порядок сортировки
     (по умолчанию — убывание). Функция возвращает новый список, отсортированный по дате."""
-    return sorted(list_of_data, key=lambda date: date['date'][:10], reverse=decreasing)
+    return sorted(list_of_data, key=lambda date: date['date'], reverse=decreasing)
 
