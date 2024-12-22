@@ -20,7 +20,7 @@ def mask_account_card(card: str) -> str:
 
 
 def get_date(date_and_time: str) -> str:
-    """Пнимает строку формата 2024-03-11T02:26:18.671407, возвращает строку формата ДД.ММ.ГГГГ"""
+    """Принимает строку формата 2024-03-11T02:26:18.671407, возвращает строку формата ДД.ММ.ГГГГ"""
     date = date_and_time[:10].split('-')
     date.reverse()
     return '.'.join(date)
