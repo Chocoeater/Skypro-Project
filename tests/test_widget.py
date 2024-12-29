@@ -47,7 +47,7 @@ def test_get_date_base_case(date):
 
 def test_get_date_value():
     with pytest.raises(ValueError, match='Неверный формат даты, ожидается формат ГГГГ-ММ-ДД...'):
-        get_date('24.12.2024')
+        get_date('24-12-2024')
 
 
 def test_get_date_value_letters():

@@ -31,7 +31,7 @@ def get_date(date_and_time: str) -> str:
     for d in date:
         if not d.isdigit():
             raise ValueError('Неверный формат даты, ожидается формат ГГГГ-ММ-ДД...')
-    for i, d in (4, 2, 2), date:
+    for i, d in zip((4, 2, 2), date):
         if len(d) != i:
             raise ValueError('Неверный формат даты, ожидается формат ГГГГ-ММ-ДД...')
     date.reverse()
