@@ -45,3 +45,18 @@ def same():
             {'id': 939719570, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
             {'id': 594226727, 'state': 'CANCELED', 'date': '2019-07-03T18:35:29.512364'},
             {'id': 615064591, 'state': 'CANCELED', 'date': '2019-07-03T18:35:29.512364'}]
+
+
+@pytest.fixture
+def mask_card():
+    return 'Visa Platinum 8990 92** **** 5229'
+
+
+@pytest.fixture
+def mask_acc():
+    return 'Счет **4305'
+
+
+@pytest.fixture
+def date():
+    return '29.12.2024'
