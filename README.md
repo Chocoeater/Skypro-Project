@@ -1,7 +1,8 @@
 # Виджет банковских операций
+___
 ## Описание:
  Виджет отображает несколько последних успешных банковских операций клиента.
-
+___
 ## Установка:
 
 1. Клонируйте репозиторий:
@@ -12,6 +13,7 @@ git clone https://github.com/Chocoeater/Skypro-Project.git
 ```
 pip install -r requirements.txt
 ```
+___
 ## Функционал:
 - Модуль masks 
     - Маскировка номера карты
@@ -50,6 +52,15 @@ pip install -r requirements.txt
                                    {'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'}, 
                                    {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'}]
         ```
+- Модуль generators
+    + Фильтрация по валюте
+    ```filter_by_currency(list_of_transactions, code_of_currency)```
+    + Описание операций
+    ```transaction_descriptions(list_of_transactions)```
+    + Генератор номеров карты в заданном диапазоне
+    ```card_number_generator(start, end)```
+___
+
 ## Тесты:
 Для запуская тестов при активированном виртуальном окружении: 
 ```
