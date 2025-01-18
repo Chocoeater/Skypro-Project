@@ -1,18 +1,26 @@
-def log(filename=False):
-    def my_dec(function):
-        def wrapper(*args, **kwargs):
+from typing import TypeVar, ParamSpec, Optional, Callable
+
+P = ParamSpec('P')  # Для аргументов
+R = TypeVar('R')  # Для возвращаемых значений
+
+
+def log(filename: Optional[str] = None) -> Callable[[Callable[P, R]], Callable[P, None]]:
+    """Записывает в файл или в консоль статус выполнения функции (успешно или ошибка)"""
+
+    def my_dec(function: Callable[P, R]) -> Callable[P, None]:
+        def wrapper(*args: P.args, **kwargs: P.kwargs) -> None:
             try:
                 function(*args, **kwargs)
             except Exception as e:
-                massage = f'{function} error: {e}. Inputs: {args, kwargs}\n'
+                message = f'{function} error: {e}. Inputs: {args, kwargs}\n'
             else:
-                massage = f'{function} ok\n'
+                message = f'{function} ok\n'
             finally:
                 if filename:
                     with open(filename, 'w', encoding='utf-8') as file:
-                        file.write(massage)
+                        file.write(message)
                 else:
-                    print(massage)
+                    print(message)
 
         return wrapper
 
