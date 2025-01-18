@@ -5,14 +5,15 @@ P = ParamSpec('P')  # Для аргументов
 R = TypeVar('R')  # Для возвращаемых значений
 
 
-def log(filename: Optional[str] = None) -> Callable[[Callable[P, R]], Callable[P, None]]:
+def log(filename: Optional[str] = None) -> Callable[[Callable[P, R]], Callable[P, R]]:
     """Записывает в файл или в консоль статус выполнения функции (успешно или ошибка)"""
 
-    def my_dec(function: Callable[P, R]) -> Callable[P, None]:
+    def my_dec(function: Callable[P, R]) -> Callable[P, R]:
         @wraps(function)
-        def wrapper(*args: P.args, **kwargs: P.kwargs) -> None:
+        def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
+            result = None
             try:
-                function(*args, **kwargs)
+                result = function(*args, **kwargs)
             except Exception as e:
                 message = f'{function.__name__} error: {e}. Inputs: {args, kwargs}'
             else:
@@ -23,7 +24,7 @@ def log(filename: Optional[str] = None) -> Callable[[Callable[P, R]], Callable[P
                         file.write(message)
                 else:
                     print(message)
-
+            return result
         return wrapper
 
     return my_dec
